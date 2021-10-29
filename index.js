@@ -17,12 +17,13 @@ async function run() {
         await client.connect();
         const database = client.db('travel');
         const placeCollection = database.collection('places');
+        const bookingCollection = database.collection('booking');
 
         // GET Places API
         app.get('/places', async (req, res) => {
             const cursor = placeCollection.find({});
             const result = await cursor.toArray();
-            res.send(result);
+            res.json(result);
         });
 
         // GET single place
@@ -31,6 +32,12 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const place = await placeCollection.findOne(query);
             res.json(place);
+        })
+
+        app.post('/addbooking', async (req, res) => {
+            const booking = req.body;
+            const result = await bookingCollection.insertOne(booking);
+            res.json(result);
         })
     }
     finally {
