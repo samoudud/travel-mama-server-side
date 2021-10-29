@@ -32,12 +32,21 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const place = await placeCollection.findOne(query);
             res.json(place);
-        })
+        });
 
+        // POST booking api
         app.post('/addbooking', async (req, res) => {
             const booking = req.body;
             const result = await bookingCollection.insertOne(booking);
             res.json(result);
+        });
+
+        // GET MyOrder api
+        app.get('/myorder/:email', async (req, res) => {
+            const email = req.params.email;
+            const result = await bookingCollection.find({ email: email }).toArray();
+            console.log(result);
+            res.send(result)
         })
     }
     finally {
