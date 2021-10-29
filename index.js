@@ -42,11 +42,20 @@ async function run() {
         });
 
         // GET MyOrder api
-        app.get('/myorder/:email', async (req, res) => {
+        app.get('/mybookings/:email', async (req, res) => {
             const email = req.params.email;
             const result = await bookingCollection.find({ email: email }).toArray();
-            console.log(result);
             res.send(result)
+        });
+
+        // DELETE api
+        app.delete('/mybooking/:id', async (req, res) => {
+            const id = req.params.id;
+            console.log('hitted')
+            const query = { _id: ObjectId(id) }
+            const result = await bookingCollection.deleteOne(query);
+            res.json(result);
+
         })
     }
     finally {
