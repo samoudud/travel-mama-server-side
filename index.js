@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
+const ObjectId = require('mongodb').ObjectId;
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -17,12 +18,20 @@ async function run() {
         const database = client.db('travel');
         const placeCollection = database.collection('places');
 
-        // GET Products API
+        // GET Places API
         app.get('/places', async (req, res) => {
             const cursor = placeCollection.find({});
             const result = await cursor.toArray();
             res.send(result);
         });
+
+        // GET single place
+        app.get('/places/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const place = await placeCollection.findOne(query);
+            res.json(place);
+        })
     }
     finally {
         // await client.close();
