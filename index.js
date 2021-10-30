@@ -64,6 +64,29 @@ async function run() {
             res.json(result);
         });
 
+        // UPDATE API
+        app.put('/bookings/:id', async (req, res) => {
+            const id = req.params.id;
+            const updatedBooking = req.body;
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    status: updatedBooking.status,
+                },
+            };
+            const result = await bookingCollection.updateOne(filter, updateDoc, options);
+            console.log('updating booking', req.body);
+            res.json(result);
+        });
+
+        // POST Place Api
+        app.post('/addplace', async (req, res) => {
+            const place = req.body;
+            const result = await placeCollection.insertOne(place);
+            res.json(result);
+        });
+
     }
     finally {
         // await client.close();
