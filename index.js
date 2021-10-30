@@ -51,12 +51,19 @@ async function run() {
         // DELETE api
         app.delete('/mybooking/:id', async (req, res) => {
             const id = req.params.id;
-            console.log('hitted')
             const query = { _id: ObjectId(id) }
             const result = await bookingCollection.deleteOne(query);
             res.json(result);
 
-        })
+        });
+
+        // GET booking API
+        app.get('/managebooking', async (req, res) => {
+            const cursor = bookingCollection.find({});
+            const result = await cursor.toArray();
+            res.json(result);
+        });
+
     }
     finally {
         // await client.close();
