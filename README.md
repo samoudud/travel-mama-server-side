@@ -14,7 +14,11 @@ Click here for the private repo: [Server site code](https://github.com/programmi
 
 ## [Key features of this website]
 In This site you can run :
-- Travel Around the world
+- Add item to the database
+- Read item from the database
+- Search item from the database
+- Update item in the database
+- Delete item from the database
 - Book a trip
 - Add trip
 - Remove Trip
