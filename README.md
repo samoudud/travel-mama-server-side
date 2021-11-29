@@ -3,13 +3,13 @@
 This project was Created with [Create React App](https://travel-mama-server.herokuapp.com/).
 ## [Client Side Live Link] (https://travel-mama-client.web.app/)
 
-## [Client Side Private repo link]
-Click here for the private repo: [Client Side code](https://github.com/programming-hero-web-course1/tourism-or-delivery-website-client-side-samoudud)
+## [Client Side Public repo link]
+Click here for the Public repo: [Client Side code](https://github.com/samoudud/travel-mama-client-side)
 
 
 
-## [Server Side Private repo link]
-Click here for the private repo: [Server site code](https://github.com/programming-hero-web-course1/tourism-or-delivery-website-server-side-samoudud)
+## [Server Side Public repo link]
+Click here for the Public repo: [Server site code](https://github.com/samoudud/travel-mama-server-side)
 
 
 ## [Key features of this website]
